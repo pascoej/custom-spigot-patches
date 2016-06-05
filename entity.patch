@@ -1,0 +1,11 @@
+--- Spigot/Spigot-Server/src/main/java/net/minecraft/server/Entity.java
++++ Spigot/Spigot-Server/src/main/java/net/minecraft/server/Entity.java
+@@ -503,7 +503,7 @@
+             double d6 = d0;
+             double d7 = d1;
+             double d8 = d2;
+-            boolean flag = this.onGround && this.isSneaking() && this instanceof EntityHuman;
++            boolean flag = false;
+ 
+             if (flag) {
+                 double d9;

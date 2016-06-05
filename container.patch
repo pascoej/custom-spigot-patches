@@ -1,0 +1,39 @@
+--- Spigot/Spigot-Server/src/main/java/net/minecraft/server/Container.java
++++ Spigot/Spigot-Server/src/main/java/net/minecraft/server/Container.java
+@@ -117,9 +117,13 @@
+ 
+         return slot != null ? slot.getItem() : null;
+     }
+-
+     @Nullable
+     public ItemStack a(int i, int j, InventoryClickType inventoryclicktype, EntityHuman entityhuman) {
++        return this.a(i,j,inventoryclicktype,entityhuman,0);
++    }
++
++    @Nullable
++    public ItemStack a(int i, int j, InventoryClickType inventoryclicktype, EntityHuman entityhuman, int counter) {
+         ItemStack itemstack = null;
+         PlayerInventory playerinventory = entityhuman.inventory;
+         int k;
+@@ -265,8 +269,8 @@
+                             Item item = itemstack3.getItem();
+ 
+                             itemstack = itemstack3.cloneItemStack();
+-                            if (slot2.getItem() != null && slot2.getItem().getItem() == item) {
+-                                this.a(i, j, true, entityhuman);
++                            if (slot2.getItem() != null && slot2.getItem().getItem() == item && counter < 130) {
++                                this.a(i, j, true, entityhuman,counter);
+                             }
+                         }
+                     }
+@@ -467,8 +471,8 @@
+         return true;
+     }
+ 
+-    protected void a(int i, int j, boolean flag, EntityHuman entityhuman) {
+-        this.a(i, j, InventoryClickType.QUICK_MOVE, entityhuman);
++    protected void a(int i, int j, boolean flag, EntityHuman entityhuman,int counter) {
++        this.a(i, j, InventoryClickType.QUICK_MOVE, entityhuman,counter);
+     }
+ 
+     public void b(EntityHuman entityhuman) {
